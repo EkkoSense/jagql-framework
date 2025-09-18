@@ -1,5 +1,5 @@
 {
-  "name": "@ekko/jagql-framework",
+  "name": "@ekkosense/jagql-framework",
   "description": "A config driven NodeJS framework implementing json:api",
   "keywords": [
     "jsonapi",
@@ -8,7 +8,7 @@
     "swagger",
     "api"
   ],
-  "version": "10.0.4",
+  "version": "11.0.0",
   "main": "lib/jsonApi.js",
   "types": "types/jsonApi.d.ts",
   "author": "",

@@ -1,5 +1,6 @@
-# CHANGELOG (`@ekko/jagql-framework`)
+# CHANGELOG (`@ekkosense/jagql-framework`)
 
+- 2025-09-18 v11.0.0. This renames from `@ekko/jagql-framework` to `@ekkosense/jagql-framework` for internal publishing.
 - 2025-08-19 v10.0.0. Replace reliance on schema for relation metadata, and
   generally reduce the impact of that; drop the last uses of lodash; general
   code modernisation; add completely separate promise-based handler support; add
