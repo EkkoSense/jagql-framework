@@ -8,7 +8,7 @@
     "swagger",
     "api"
   ],
-  "version": "11.0.0",
+  "version": "11.0.1-0",
   "main": "lib/jsonApi.js",
   "types": "types/jsonApi.d.ts",
   "author": "",
