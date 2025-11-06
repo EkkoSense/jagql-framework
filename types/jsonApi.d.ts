@@ -26,7 +26,7 @@ import ChainPromiseHandler from "../lib/handlers/ChainPromiseHandler"
 import MemoryPromiseHandler from "./MemoryPromiseHandler"
 import { JsonApiRequest } from "./JsonApiRequest"
 
-interface ApiConfig {
+export interface ApiConfig {
   graphiql?: boolean
   jsonapi?: boolean
   protocol: JsonApiProtocols
