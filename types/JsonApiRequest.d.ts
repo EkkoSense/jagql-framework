@@ -23,6 +23,7 @@ interface JsonApiInternalParams extends JsonApiRequestParams {
 }
 
 export interface JsonApiRequest {
+  inferredBaseUrl: string | null
   params: JsonApiInternalParams
   processedFilter?: Record<string, FilterSpec[]>
   headers: any

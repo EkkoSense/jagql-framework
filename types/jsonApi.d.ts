@@ -28,6 +28,11 @@ import { JsonApiRequest } from "./JsonApiRequest"
 
 export interface ApiConfig {
   graphiql?: boolean
+  /**
+   * If set, the external URL base may be supplied in the given header. This
+   * overrides the local configuration if present.
+   */
+  inferExternalUrlFromHeader?: string
   jsonapi?: boolean
   /**
    * Used to determine which kind of service to start, as well as for URL

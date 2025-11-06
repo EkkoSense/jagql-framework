@@ -158,7 +158,7 @@ module.exports = class swaggerValidator {
   }
 
   static assert(params, statusCode, json) {
-    if (!swaggerDoc) swaggerDoc = swagger.generateDocumentation()
+    if (!swaggerDoc) swaggerDoc = swagger.generateDocumentation({})
     const urlObj = new URL(params.url)
     this.#validateRequest(params.method.toLowerCase(), urlObj.pathname, JSON.parse(params.body || 'null'))
     this.#validatePayload(params.method.toLowerCase(), urlObj.pathname, statusCode, JSON.parse(json))

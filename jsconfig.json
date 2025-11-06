@@ -2,7 +2,7 @@
     "compilerOptions": {
         "checkJs": true,
         "strict": true,
-        "target": "es2015"
+        "target": "es2018"
     },
     "include": ["lib/"]
 }
