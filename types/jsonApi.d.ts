@@ -29,12 +29,31 @@ import { JsonApiRequest } from "./JsonApiRequest"
 export interface ApiConfig {
   graphiql?: boolean
   jsonapi?: boolean
+  /**
+   * Used to determine which kind of service to start, as well as for URL
+   * construction if urlPrefixAlias is unset.
+   */
   protocol: JsonApiProtocols
+  /**
+   * If set, this sets the external view of the URL, as may be used if this
+   * service runs through a proxy. If not supplied, that's equivalent to
+   * supplying `${protocol}://${hostname}:${port}/${base}`. For historical
+   * reasons, this value must end with the `base` value.
+   */
   urlPrefixAlias?: string
+  /**
+   * Used for URL construction if urlPrefixAlias is unset.
+   */
   hostname: string
+  /**
+   * Used to launch the service, if you don't provide your own router, as well
+   * as for URL construction if urlPrefixAlias is unset.
+   */
   port: number
   /**
-   * No leading / required
+   * No leading / required. This is the base path for the service. Used for
+   * internal routing, external route binding; for URL construction where
+   * urlPrefixAlias is unset; and included in route advice to handlers
    */
   base: string,
   meta: any
