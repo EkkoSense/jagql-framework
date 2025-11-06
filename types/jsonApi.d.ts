@@ -53,7 +53,9 @@ export interface ApiConfig {
   /**
    * No leading / required. This is the base path for the service. Used for
    * internal routing, external route binding; for URL construction where
-   * urlPrefixAlias is unset; and included in route advice to handlers
+   * urlPrefixAlias is unset; and included in route advice to handlers.
+   *
+   * The internal version will always have a leading and trailing "/".
    */
   base: string,
   meta: any
