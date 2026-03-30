@@ -5,46 +5,49 @@ const childProcess = require('child_process')
 const path = require('path')
 
 describe('Testing jsonapi-server with bring-your-own router', () => {
-  const serverPath = path.join(__dirname, 'fixtures', 'server-byo-router.js')
+    const serverPath = path.join(__dirname, 'fixtures', 'server-byo-router.js')
 
-  let child
-  let isErrorEmitted
-  let isExitEmitted
-  let exitCode
-  let exitSignal
+    let child
+    let isErrorEmitted
+    let isExitEmitted
+    let exitCode
+    let exitSignal
 
-  it('"exit" event, no "error" event', () => new Promise(resolve => setTimeout(() => {
-      assert.strictEqual(isExitEmitted, true)
-      assert.strictEqual(isErrorEmitted, false)
-      resolve()
+    it('"exit" event, no "error" event', () => new Promise(resolve => setTimeout(() => {
+        if (exitCode) {
+            console.warn("EXIT CODE", exitCode)
+        }
+        assert.strictEqual(isExitEmitted, true)
+        assert.strictEqual(isErrorEmitted, false)
+        resolve()
     }, 1000)
-  ))
+    ))
 
-  it('exit code is 0 (success)', () => {
-    assert.strictEqual(exitCode, 0)
-    assert.strictEqual(exitSignal, null)
-  })
+    it('exit code is 0 (success)', () => {
+        assert.strictEqual(exitCode, 0)
+        assert.strictEqual(exitSignal, null)
+    })
 
-  before(() => {
-    child = null
-    isErrorEmitted = false
-    isExitEmitted = false
-    exitCode = null
+    before(() => {
+        child = null
+        isErrorEmitted = false
+        isExitEmitted = false
+        exitCode = null
 
-    child = childProcess.fork(serverPath, [], { stdio: 'inherit' })
-    child.on('error', () => { isErrorEmitted = true })
-    return new Promise(resolve => child.on('exit', (code, signal) => {
-      exitCode = code
-      exitSignal = signal
-      isExitEmitted = true
-      resolve()
-    }))
-  })
+        child = childProcess.fork(serverPath, [], { stdio: 'inherit' })
+        child.on('error', () => { isErrorEmitted = true })
+        return new Promise(resolve => child.on('exit', (code, signal) => {
+            exitCode = code
+            exitSignal = signal
+            isExitEmitted = true
+            resolve()
+        }))
+    })
 
-  after(() => {
-    if (child) {
-      child.kill()
-      child = null
-    }
-  })
+    after(() => {
+        if (child) {
+            child.kill()
+            child = null
+        }
+    })
 })
