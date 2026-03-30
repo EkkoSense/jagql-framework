@@ -2,7 +2,7 @@
 
 const jsonApi = require("../../lib/jsonApi.js")
 const notesHandler = require("../handlers/notesHandler.js")
-const uuid = require('uuid')
+const {notesData} = require("../notesData.js")
 
 jsonApi.define({
   namespace: "json:api",
@@ -18,13 +18,7 @@ jsonApi.define({
     timestamp: jsonApi.Joi.string().regex(/^[12]\d\d\d-[01]\d-[0123]\d$/)
       .description("The date on which the comment was created, YYYY-MM-DD")
       .example("2017-05-01"),
+    parent: jsonApi.Joi.oneOf('people'),
   },
-  examples: [
-    ...new Array(100_000)
-  ].map((_, i) => ({
-    id: uuid.v4(),
-    type: "notes",
-    body: `First! ${i}`,
-    timestamp: "2017-01-02",
-  }))
+  examples: notesData
 })

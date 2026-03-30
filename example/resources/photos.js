@@ -2,6 +2,7 @@
 
 const jsonApi = require('../../.')
 const photoHandler = require('../handlers/photoHandler.js')
+const uuid = require("uuid")
 
 jsonApi.define({
   namespace: 'json:api',
@@ -78,7 +79,18 @@ jsonApi.define({
       raw: true,
       tags: ['orange', 'sky', 'sun'],
       photographer: { type: 'people', id: 'cc5cca2e-0dd8-4b95-8cfc-a11230e73116' }
-    }
-
+    },
+    // Large-scale test
+    ...[...new Array(1_005)].map(() => ({
+      id: uuid.v4(),
+      type: 'photos',
+      title: 'Bulk test',
+      url: 'http://www.example.com/bulk',
+      height: 450,
+      width: 1050,
+      raw: false,
+      tags: ['orange', 'sky', 'sun'],
+      photographer: { type: 'people', id: 'be100353-4f53-494b-8af9-ba9b8c425527' }
+    }))
   ]
 })

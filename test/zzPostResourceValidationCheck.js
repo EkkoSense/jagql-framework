@@ -7,8 +7,8 @@ const jsonApiTestServer = require('../example/server.js')
 describe('Testing jsonapi-server (post)', () => {
   for(const resource of [ { name: 'articles', count: 4 },
     { name: 'comments', count: 2 },
-    { name: 'people', count: 4 },
-    { name: 'photos', count: 5 },
+    { name: 'people', count: 5 },
+    { name: 'photos', count: 50 }, // Note page limit
     { name: 'tags', count: 5 }
   ]) {
     describe(`Searching for ${resource.name}`, () => {

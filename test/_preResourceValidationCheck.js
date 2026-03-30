@@ -7,8 +7,8 @@ const jsonApiTestServer = require('../example/server.js')
 describe('Testing jsonapi-server (pre)', () => {
   const resources = [ { name: 'articles', count: 4 },
     { name: 'comments', count: 3 },
-    { name: 'people', count: 4 },
-    { name: 'photos', count: 4 },
+    { name: 'people', count: 5 },
+    { name: 'photos', count: 50 }, // Note: at limit
     { name: 'tags', count: 5 }
   ]
   for(const resource of resources) {
